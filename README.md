@@ -1,0 +1,94 @@
+# ipartnyor
+
+Vue 3 + Vite + TypeScript starter powered by
+[Feature-Sliced Design](https://feature-sliced.design/).
+
+This repository is the Vue template used by
+[`create-fsd-architecture`](https://www.npmjs.com/package/create-fsd-architecture).
+
+## Validation scope
+
+This repository is a starter. Its quality checks cover architecture, lint,
+types and build; application-specific security, backend integration,
+authentication and deployment require separate validation. Passing template
+checks does not certify production deployment. See the
+[current CLI release status](https://github.com/FSD-CLI/cli/blob/main/docs/RELEASE-STATUS.md)
+for tested combinations and remaining gaps.
+
+## Create a project
+
+```bash
+npx create-fsd-architecture@latest my-app --framework vue-vite
+```
+
+## Stack
+
+- Vue 3 and Vite
+- TypeScript
+- Pinia
+- TanStack Vue Query
+- Axios
+- VeeValidate 4 and Zod 3 (the current stable compatible pair)
+- Tailwind CSS
+- Steiger architecture checks
+- ESLint, Husky, and Commitlint
+
+## Architecture
+
+```text
+src/
+├── app/
+├── pages/
+├── widgets/
+├── features/
+├── entities/
+└── shared/
+```
+
+The dependency direction is `app → pages → widgets → features → entities → shared`.
+Slices expose their public API through `index.ts` files.
+
+## Development
+
+```bash
+npm install
+npm run dev
+```
+
+Quality checks:
+
+```bash
+npm run fsd:check
+npm run lint
+npm run build
+npm run ci
+```
+
+## Generate slices
+
+Inside a generated project:
+
+```bash
+npx create-fsd-architecture --generate feature auth
+npx create-fsd-architecture --generate entity product
+npx create-fsd-architecture --generate widget navigation
+npx create-fsd-architecture --generate page checkout
+```
+
+The CLI reads `fsd.config.json`, so generated files use Vue-native libraries
+without asking for the stack again.
+
+## License
+
+MIT
+
+## Support FSD CLI
+
+If this project helps you, you can optionally support its development:
+
+- [GitHub Sponsors](https://github.com/sponsors/ashrafmo-1?frequency=one-time&sponsor=ashrafmo-1)
+- [Buy Me a Coffee](https://buymeacoffee.com/ashrafqopiah)
+- **InstaPay (Egypt):** `ashrafmo-1`
+
+For InstaPay, use the username exactly as shown and verify the recipient details
+in the app before confirming a transfer. Donations are optional.
