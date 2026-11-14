@@ -1,2 +1,1 @@
-export { templateInfo } from './template-info'
-export { fsdStack } from './fsd-stack'
+// Export application-wide configuration through this public API.

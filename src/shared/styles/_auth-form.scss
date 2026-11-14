@@ -1,0 +1,117 @@
+// Общие стили формы авторизации (логин и регистрация).
+// Подключается через `@use` в scoped-стилях страниц.
+
+@mixin auth-form($fields-gap: 1rem, $submit-margin-top: 3rem) {
+  h1 {
+    margin: 0 0 2rem;
+    color: var(--color-text-01);
+    font-size: clamp(1.35rem, 2vw, 1.65rem);
+    font-weight: 600;
+    letter-spacing: -0.025em;
+    text-align: center;
+  }
+
+  &__fields {
+    display: flex;
+    flex-direction: column;
+    gap: $fields-gap;
+  }
+
+  &__input {
+    width: 100%;
+    min-height: 3.1rem;
+    padding: 0.8rem 1rem;
+    border: 1px solid rgb(255 255 255 / 5%);
+    border-radius: 0.75rem;
+    outline: none;
+    background: #242328;
+    color: var(--color-text-01);
+    font: inherit;
+    font-size: 0.95rem;
+    transition: border-color 160ms ease, box-shadow 160ms ease;
+
+    &::placeholder {
+      color: #b9b8bd;
+      opacity: 1;
+    }
+
+    &:focus-visible {
+      border-color: var(--color-focused);
+      box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-focused) 22%, transparent);
+    }
+  }
+
+  &__submit {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 3.2rem;
+    margin-top: $submit-margin-top;
+    padding: 0.8rem 3rem;
+    border: 0;
+    border-radius: 0.75rem;
+    background: var(--color-primary);
+    color: #fff;
+    cursor: pointer;
+    font: inherit;
+    font-size: 0.95rem;
+    font-weight: 600;
+    transition: background-color 160ms ease, transform 160ms ease;
+
+    &:hover {
+      background: var(--color-primary-hover);
+    }
+
+    &:active {
+      background: var(--color-primary-pressed);
+      transform: translateY(1px);
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--color-focused);
+      outline-offset: 3px;
+    }
+  }
+
+  &__arrow {
+    position: absolute;
+    right: 1.1rem;
+    top: 50%;
+    font-size: 2rem;
+    font-weight: 300;
+    line-height: 1;
+    transform: translateY(-54%);
+  }
+
+  &__footer {
+    margin-top: 1.7rem;
+    color: var(--color-text-02);
+    font-size: 0.9rem;
+    text-align: center;
+  }
+
+  &__secondary-link {
+    color: var(--color-link);
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--color-focused);
+      outline-offset: 3px;
+    }
+  }
+}
+
+@mixin sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  clip-path: inset(50%);
+}
