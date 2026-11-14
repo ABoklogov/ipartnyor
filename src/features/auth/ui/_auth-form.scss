@@ -68,19 +68,6 @@
     position: relative;
     min-height: 3.2rem;
     margin-top: $submit-margin-top;
-
-    // Декоративная стрелка справа, как в макете.
-    &::after {
-      content: '›';
-      position: absolute;
-      right: 1.1rem;
-      top: 50%;
-      font-size: 2rem;
-      font-weight: 300;
-      line-height: 1;
-      transform: translateY(-54%);
-      pointer-events: none;
-    }
   }
 
   &__footer {

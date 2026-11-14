@@ -4,6 +4,7 @@ import { installAppProviders } from '@/app/providers'
 import { router } from '@/app/routing'
 import '@/app/styles/index.css'
 import '@/app/styles/theme.scss'
+import 'primeicons/primeicons.css'
 
 const app = createApp(App)
 

@@ -105,6 +105,8 @@
         class="auth-form__submit"
         type="submit"
         label="Зарегистрироваться"
+        icon="pi pi-chevron-right"
+        iconPos="right"
         :loading="isSubmitting"
         fluid
       />
@@ -160,6 +162,20 @@ const onSubmit = handleSubmit((values) => {
 
 .auth-form {
   @include form.auth-form($fields-gap: 0.9rem, $submit-margin-top: 2.8rem);
+}
+
+.auth-form__submit {
+  :deep(.p-button-root) {
+    position: relative;
+  }
+
+  :deep(.p-button-icon) {
+    position: absolute;
+    right: 1.1rem;
+    top: 50%;
+    font-size: 1.6rem;
+    transform: translateY(-50%);
+  }
 }
 
 .sr-only {
