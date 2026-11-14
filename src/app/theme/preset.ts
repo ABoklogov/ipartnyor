@@ -67,6 +67,31 @@ const ipartnyorPreset = definePreset(aura, {
       900: APP_SURFACE[900],
       950: APP_SURFACE[950],
     },
+    // Поля форм — тёмные «плашки» с хаки-фокусом
+    formField: {
+      background: '#242328',
+      filledBackground: '#242328',
+      filledHoverBackground: '#242328',
+      filledFocusBackground: '#242328',
+      borderColor: 'rgb(255 255 255 / 6%)',
+      hoverBorderColor: '#597719',
+      focusBorderColor: '#8ab82e',
+      invalidBorderColor: '#f97066',
+      color: '#ffffff',
+      placeholderColor: '#b9b8bd',
+      invalidPlaceholderColor: '#f97066',
+      borderRadius: '0.75rem',
+      paddingX: '1rem',
+      paddingY: '0.8rem',
+      shadow: 'none',
+      focusRing: {
+        width: '0',
+        style: 'solid',
+        color: 'transparent',
+        offset: '0',
+        shadow: '0 0 0 3px rgb(138 184 46 / 22%)',
+      },
+    },
   },
 })
 

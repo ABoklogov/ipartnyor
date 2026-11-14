@@ -1,0 +1,111 @@
+// Общие стили форм авторизации.
+// Тема PrimeVue-компонентов задаётся через CSS-токены на корне формы.
+
+@mixin auth-form($fields-gap: 1rem, $submit-margin-top: 3rem) {
+  // InputText
+  --p-inputtext-background: #242328;
+  --p-inputtext-filled-background: #242328;
+  --p-inputtext-filled-hover-background: #242328;
+  --p-inputtext-filled-focus-background: #242328;
+  --p-inputtext-border-color: rgb(255 255 255 / 6%);
+  --p-inputtext-hover-border-color: var(--color-primary);
+  --p-inputtext-focus-border-color: var(--color-focused);
+  --p-inputtext-invalid-border-color: var(--color-negative-text);
+  --p-inputtext-color: var(--color-text-01);
+  --p-inputtext-placeholder-color: #b9b8bd;
+  --p-inputtext-shadow: none;
+
+  // Button (primary)
+  --p-button-border-radius: 0.75rem;
+  --p-button-primary-background: var(--color-primary);
+  --p-button-primary-border-color: var(--color-primary);
+  --p-button-primary-hover-background: var(--color-primary-hover);
+  --p-button-primary-hover-border-color: var(--color-primary-hover);
+  --p-button-primary-active-background: var(--color-primary-pressed);
+  --p-button-primary-active-border-color: var(--color-primary-pressed);
+  --p-button-primary-color: #fff;
+  --p-button-primary-hover-color: #fff;
+  --p-button-primary-active-color: #fff;
+
+  // Button (link)
+  --p-button-link-color: var(--color-link);
+  --p-button-link-hover-color: var(--color-primary-hover);
+  --p-button-link-active-color: var(--color-primary-pressed);
+
+  display: flex;
+  flex-direction: column;
+
+  &__title {
+    margin: 0 0 2rem;
+    color: var(--color-text-01);
+    font-size: clamp(1.35rem, 2vw, 1.65rem);
+    font-weight: 600;
+    letter-spacing: -0.025em;
+    text-align: center;
+  }
+
+  &__fields {
+    display: flex;
+    flex-direction: column;
+    gap: $fields-gap;
+  }
+
+  &__field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+  }
+
+  &__error {
+    color: var(--color-negative-text);
+    font-size: 0.8rem;
+    line-height: 1.35;
+  }
+
+  &__submit {
+    --p-button-padding-x: 3rem;
+
+    position: relative;
+    min-height: 3.2rem;
+    margin-top: $submit-margin-top;
+
+    // Декоративная стрелка справа, как в макете.
+    &::after {
+      content: '›';
+      position: absolute;
+      right: 1.1rem;
+      top: 50%;
+      font-size: 2rem;
+      font-weight: 300;
+      line-height: 1;
+      transform: translateY(-54%);
+      pointer-events: none;
+    }
+  }
+
+  &__footer {
+    margin-top: 1.7rem;
+    color: var(--color-text-02);
+    font-size: 0.9rem;
+    text-align: center;
+  }
+
+  &__link {
+    --p-button-padding-x: 0;
+    --p-button-padding-y: 0;
+
+    font-size: inherit;
+    font-weight: 400;
+    text-decoration: none;
+  }
+}
+
+@mixin sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  clip-path: inset(50%);
+}

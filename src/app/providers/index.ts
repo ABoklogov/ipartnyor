@@ -11,7 +11,7 @@ export function installAppProviders(app: App) {
     theme: {
       preset: ipartnyorPreset,
       options: {
-        darkModeSelector: false,
+        darkModeSelector: '.dark',
         cssLayer: false,
       },
     },
