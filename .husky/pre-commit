@@ -4,6 +4,15 @@ if [ "${HUSKY:-1}" = "0" ]; then
   echo "FSD: hook bypassed via HUSKY=0; CI checks still apply."
   exit 0
 fi
+
+# Автоматически удаляем trailing whitespace из staged файлов
+git diff --cached --name-only -z | xargs -0 -I {} sh -c '
+  if [ -f "{}" ]; then
+    sed -i "" "s/[[:space:]]*\$//" "{}"
+    git add "{}"
+  fi
+' 2>/dev/null || true
+
 git diff --cached --check
 git diff --check
 if [ "${FSD_PRE_COMMIT_LINT:-0}" = "1" ]; then
