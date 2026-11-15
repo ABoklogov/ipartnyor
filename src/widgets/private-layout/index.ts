@@ -1,0 +1,1 @@
+export { default as PrivateLayout } from './ui/PrivateLayout.vue'
