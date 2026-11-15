@@ -1,7 +1,7 @@
-import { clearAuth } from '@/entities/auth'
+import { useAuthStore } from '@/entities/auth'
 
 export function handleLogout(): void {
-  clearAuth()
+  useAuthStore().clear()
 }
 
 export function isActive(

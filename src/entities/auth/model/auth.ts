@@ -1,23 +1,25 @@
-export interface AuthModel {
-  token: string | null
-}
+import { ref, computed } from 'vue'
+import { defineStore } from 'pinia'
+import type { AuthState } from '../types'
 
-const TOKEN_KEY = 'auth_token'
+export const useAuthStore = defineStore('auth', () => {
+  const state = ref<AuthState>({
+    token: null,
+  })
 
-export function getAuth(): AuthModel {
-  return {
-    token: localStorage.getItem(TOKEN_KEY) ?? null,
+  const isAuthenticated = computed(() => state.value.token !== null)
+
+  function setToken(token: string) {
+    state.value.token = token
   }
-}
 
-export function setAuth(token: string): void {
-  localStorage.setItem(TOKEN_KEY, token)
-}
+  function clear() {
+    state.value.token = null
+  }
 
-export function clearAuth(): void {
-  localStorage.removeItem(TOKEN_KEY)
-}
-
-export function isAuthenticated(): boolean {
-  return getAuth().token !== null
-}
+  return { state, isAuthenticated, setToken, clear }
+}, {
+  persist: {
+    pick: ['state'],
+  },
+})

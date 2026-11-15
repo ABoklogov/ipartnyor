@@ -1,23 +1,19 @@
 import type { LoginFormValues, RegisterFormValues } from './schemas'
-
-const TOKEN_KEY = 'auth_token'
-const EMAIL_KEY = 'auth_email'
-const NAME_KEY = 'auth_name'
+import { useAuthStore } from '@/entities/auth'
+import { useProfileStore } from '@/entities/profile'
 
 // Заглушки до подключения API: сохраняем сессию локально.
 export function signIn(values: LoginFormValues) {
-  localStorage.setItem(TOKEN_KEY, 'demo-token')
-  localStorage.setItem(EMAIL_KEY, values.email)
+  useAuthStore().setToken('demo-token')
+  useProfileStore().set('', values.email)
 }
 
 export function signUp(values: RegisterFormValues) {
-  localStorage.setItem(TOKEN_KEY, 'demo-token')
-  localStorage.setItem(EMAIL_KEY, values.email)
-  localStorage.setItem(NAME_KEY, values.name)
+  useAuthStore().setToken('demo-token')
+  useProfileStore().set(values.name, values.email)
 }
 
 export function signOut() {
-  localStorage.removeItem(TOKEN_KEY)
-  localStorage.removeItem(EMAIL_KEY)
-  localStorage.removeItem(NAME_KEY)
+  useAuthStore().clear()
+  useProfileStore().clear()
 }
