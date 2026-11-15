@@ -1,4 +1,4 @@
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 import { defineStore } from 'pinia'
 import type { ProfileState } from '../types'
 
@@ -7,6 +7,8 @@ export const useProfileStore = defineStore('profile', () => {
     name: null,
     email: null,
   })
+
+  const userName = computed(() => state.value.name)
 
   function set(name: string, email: string) {
     state.value.name = name
@@ -18,7 +20,7 @@ export const useProfileStore = defineStore('profile', () => {
     state.value.email = null
   }
 
-  return { state, set, clear }
+  return { state, userName, set, clear }
 }, {
   persist: {
     pick: ['state'],

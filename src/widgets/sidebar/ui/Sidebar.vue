@@ -14,7 +14,7 @@
         severity="secondary"
         outlined
         aria-label="Свернуть / развернуть сайдбар"
-        @click="isCollapsed = !isCollapsed"
+        @click="toggleCollapsed"
       />
     </div>
 
@@ -53,9 +53,10 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
+import { computed } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
 import Button from 'primevue/button'
+import { useSidebarStore } from '@/entities/sidebar'
 import {
   ROUTE_LOGIN,
   ROUTE_CHAT,
@@ -87,7 +88,12 @@ const navItems: NavItem[] = [
 
 const router = useRouter()
 const route = useRoute()
-const isCollapsed = ref(false)
+const sidebar = useSidebarStore()
+const isCollapsed = computed(() => sidebar.state.collapsed)
+
+function toggleCollapsed() {
+  sidebar.toggle()
+}
 
 function active(name: string): boolean {
   return isActive(route.name, name)
@@ -140,7 +146,7 @@ function onLogout() {
     flex-shrink: 0;
 
     :deep(.p-button-icon) {
-      font-size: 1.15rem;
+      font-size: 1.5rem;
     }
   }
 
